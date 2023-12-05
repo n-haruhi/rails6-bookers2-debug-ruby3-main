@@ -17,6 +17,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # フォロー一覧
+  def followings
+    user = User.find(params[:user_id])
+    @users = user.followings
+  end
+  # フォロワー一覧
+  def followers
+    user = User.find(params[:user_id])
+    @users = user.followers
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
