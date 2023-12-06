@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   get 'users/:user_id/followings' => 'relationships#followings', as: 'followings'
   get 'users/:user_id/followers' => 'relationships#followers', as: 'followers'
+  get "search" => "searches#search"
 
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
     resource :favorite, only: [:create, :destroy]
