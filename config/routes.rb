@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "home/about" => "homes#about"
+
   get 'users/:user_id/followings' => 'relationships#followings', as: 'followings'
   get 'users/:user_id/followers' => 'relationships#followers', as: 'followers'
   get "search" => "searches#search"
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+
 
 end
