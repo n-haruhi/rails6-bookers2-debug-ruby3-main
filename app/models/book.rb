@@ -7,6 +7,12 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 
+  after_create do
+    user.followers.each do |follower|
+      Notification.create(user_id: follower.id, notifiable_type: “Book”, notifiable_id: id)
+    end
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
